@@ -33,7 +33,7 @@ const [refetch, setRefetch] = useState(true);
   };
 let formDataSubmit = {}
   useEffect(() => {
-    Axios.get("https://black-intern-bnsow.pwskills.app:8000/getallproducts")
+    Axios.get("https://oblinebidappbackend.onrender.com/getallproducts")
       .then((result) => SetProducts(result.data))
       .catch((err) => console.log(err));
   }, [refetch]);
@@ -86,7 +86,7 @@ let formDataSubmit = {}
         description : formData.description ,
     }
 
-    Axios.post("https://black-intern-bnsow.pwskills.app:8000/AddProduct",{formDataSubmit}).then((result)=>{
+    Axios.post("https://oblinebidappbackend.onrender.com/AddProduct",{formDataSubmit}).then((result)=>{
         console.log(result);
         if(result.status === 200){
             if (result.data === "success")

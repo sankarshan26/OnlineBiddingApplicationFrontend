@@ -5,14 +5,14 @@ import AdminNavbar from "./AdminNavbar";
 function UserData() {
   const [users, SetUsers] = useState([]);
   const handleDelete = (email)=>{
-    Axios.delete("https://black-intern-bnsow.pwskills.app:8000//deleteuser/"+email)
+    Axios.delete("https://oblinebidappbackend.onrender.com/deleteuser/"+email)
     .then(result=>{console.log(result);
     window.location.reload()})
     .catch(err=>console.log(err))
   }
   
   useEffect(() => {
-    Axios.get("https://black-intern-bnsow.pwskills.app:8000/getallusers")
+    Axios.get("https://oblinebidappbackend.onrender.com/getallusers")
       .then((result) => SetUsers(result.data))
       .catch((err) => console.log(err));
   }, []);

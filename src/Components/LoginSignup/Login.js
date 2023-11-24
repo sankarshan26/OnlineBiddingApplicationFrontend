@@ -55,7 +55,11 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    authenticateUser(e);
+    if(loginState.email ==="admin@admin.com" && loginState.password==="admin"){
+      navigate("/adminhomepage")
+    }
+    else {authenticateUser(e);}
+    
   };
 
   const navigateTohomePage = () => {

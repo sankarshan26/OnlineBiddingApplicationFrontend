@@ -47,11 +47,14 @@ export default function TopDeals({ heading }) {
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
 
-      await Axios.get(
-        "https://oblinebidappbackend.onrender.com/getallproducts"
-      )
-        .then((result) => {SetProducts(result.data)})
-        .catch((err) => console.log(err));
+      await Axios.get("https://oblinebidappbackend.onrender.com/getallproducts")
+      .then((result) => {
+        console.log(result.data)
+        const filteredData = result.data.filter((item) => new Date(item.endDate) >= new Date());
+        SetProducts(filteredData);
+        //SetProducts(result.data);
+      })
+      .catch((err) => console.log(err));
 
 
         

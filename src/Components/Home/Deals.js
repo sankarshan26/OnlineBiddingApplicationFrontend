@@ -20,7 +20,12 @@ export default function TopDeals({ heading }) {
   const [data, SetProducts] = useState([]);
   useEffect(() => {
     Axios.get("https://oblinebidappbackend.onrender.com/getallproducts")
-      .then((result) => SetProducts(result.data))
+      .then((result) => {
+        console.log(result.data)
+        const filteredData = result.data.filter((item) => new Date(item.endDate) >= new Date());
+        SetProducts(filteredData);
+        //SetProducts(result.data);
+      })
       .catch((err) => console.log(err));
   }, []);
 
@@ -45,8 +50,11 @@ export default function TopDeals({ heading }) {
       await Axios.get(
         "https://oblinebidappbackend.onrender.com/getallproducts"
       )
-        .then((result) => SetProducts(result.data))
+        .then((result) => {SetProducts(result.data)})
         .catch((err) => console.log(err));
+
+
+        
   }
 
   return (
